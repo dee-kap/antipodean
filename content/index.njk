@@ -4,11 +4,20 @@ const eleventyNavigation = {
 	order: 1
 };
 
-const numberOfLatestPostsToShow = 3;
+const numberOfLatestPostsToShow = 5;
 ---
+
+<div class="h-card home-intro">
+    <p>👋 Hi! I’m <span class="p-name">Deepak</span>.</p>
+    <mark>I'm a software developer based in <span class="p-locality">Sydney, Australia</span>.</mark> 
+    <p>🙏 Welcome to my online home.</p>
+    <p>You can find more about me in the <a href="/pages/about">about page</a></p>
+</div>
+
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
+{# <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1> #}
+<h2>Latest Posts</h2>
 
 {% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
 {% set postslistCounter = postsCount %}
@@ -18,6 +27,8 @@ const numberOfLatestPostsToShow = 3;
 {% if morePosts > 0 %}
 <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
 {% endif %}
+
+<hr/>
 
 {# List every content page in the project #}
 {#

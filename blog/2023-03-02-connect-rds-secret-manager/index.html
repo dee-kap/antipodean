@@ -262,29 +262,38 @@ pre[class*="language-diff-"] {
 		--text-color-link-visited: #cba6f7; /* Mauve */
 
 	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var(--color-mauve)
+	}
+	
 	mark {
-		background: #89b4fa;
+		background: var(--color-green);
 		padding: 4px;
 		border-radius: 3px;
 	  }
 
 	  a[href] {
-		color: var(--color-mauve);
+		color: var(--color-blue);
 	}
 	a[href]:visited {
-		color: var(--color-mauve);
+		color: var(--color-blue);
 	}
 	a[href]:hover,
 	a[href]:active {
-		color: var(--color-mauve);
+		color: var(--color-blue);
 	}
 	header {
 		border-bottom: 1px dashed var(--color-rosewater);
 	}
+  
 }
 
 .home-intro {
-	margin-top: 2.5rem!important;
 	margin-bottom: 4em;
 }
 
@@ -327,7 +336,7 @@ p:last-child {
 	margin-bottom: 0;
 }
 p {
-	line-height: 1.7;
+	line-height: 1.6;
 }
 
 li {
@@ -404,7 +413,6 @@ header {
 .home-link {
 	font-size: 1em; 
 	font-weight: 700;
-	margin-right: 2em;
 }
 /* .home-link:link:not(:hover) {
 	text-decoration: none;
@@ -492,7 +500,50 @@ header {
 }
 .post-metadata time {
 	margin-right: 1em;
-}</style>
+}
+.books-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px; 
+	padding: 16px;
+	list-style: none;
+  }
+  
+  
+  .books-list li {
+	position: relative;
+	width: 150px; /* Adjust width based on desired size */
+	height: 250px; /* Adjust height based on desired size */
+  }
+  
+  .books-list .book {
+	position: relative;
+	width: 150px;
+	height: 100%;
+	object-fit: cover; /* Ensures the cover image fits nicely */
+  }
+  
+  .book-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 35%;
+	background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+	color: #fff;
+	padding: 8px;
+	text-align: center;
+	/* font-size: 16px; */
+  }
+  
+  .book-rating {
+	font-size: 14px;
+	margin-top: 4px;
+	color: #ffd700; /* Gold color for star ratings */
+  }</style>
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
@@ -502,13 +553,12 @@ header {
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
+					<li class="nav-item"><a href="/about/"></a></li>
 					<li class="nav-item"><a href="/colophon/"></a></li>
+					<li class="nav-item"><a href="/"></a></li>
 					<li class="nav-item"><a href="/setup/"></a></li>
-					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/blog/">Blog</a></li>
-					<li class="nav-item"><a href="/about/">About</a></li>
 					<li class="nav-item"><a href="/pages/">Pages</a></li>
-					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -573,7 +623,7 @@ SECRET_ARN <span class="token operator">=</span> <span class="token string">'&lt
 		<footer>
 		</footer>
 
-		<!-- This page `/blog/2023-03-02-connect-rds-secret-manager/` was built on 2024-10-24T06:51:04.559Z -->
+		<!-- This page `/blog/2023-03-02-connect-rds-secret-manager/` was built on 2024-10-24T11:33:05.318Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

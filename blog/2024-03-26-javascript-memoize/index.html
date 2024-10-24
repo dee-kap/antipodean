@@ -215,8 +215,6 @@ pre[class*="language-diff-"] {
 	--color-gray-50: #cdd6f4; /* Flamingo */
 	--color-gray-90: #45475a; /* Surface1 */
 
-	--background-color: #1e1e2e; /* Base */
-
 	--text-color: var(--color-gray-90);
 	--text-color-link: #89b4fa; /* Blue */
 	--text-color-link-active: #f38ba8; /* Pink */
@@ -227,7 +225,7 @@ pre[class*="language-diff-"] {
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-rosewater: #f5e0dc;
+	--color-rosewater: #f5e0dc;
 	--color-flamingo: #f2cdcd;
 	--color-pink: #f5c2e7;
 	--color-mauve: #cba6f7;
@@ -263,13 +261,26 @@ pre[class*="language-diff-"] {
 		--text-color-link-active: #cba6f7; /* Peach */
 		--text-color-link-visited: #cba6f7; /* Mauve */
 
-		--background-color: #1e1e2e; /* Base */
 	}
 	mark {
 		background: #89b4fa;
 		padding: 4px;
 		border-radius: 3px;
 	  }
+
+	  a[href] {
+		color: var(--color-mauve);
+	}
+	a[href]:visited {
+		color: var(--color-mauve);
+	}
+	a[href]:hover,
+	a[href]:active {
+		color: var(--color-mauve);
+	}
+	header {
+		border-bottom: 1px dashed var(--color-rosewater);
+	}
 }
 
 .home-intro {
@@ -294,7 +305,7 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
+	max-width: 720px;
 }
 img {
 	max-width: 100%;
@@ -323,16 +334,7 @@ li {
 	line-height: 1.5;
 }
 
-a[href] {
-	color: var(--text-color-link);
-}
-a[href]:visited {
-	color: var(--text-color-link-visited);
-}
-a[href]:hover,
-a[href]:active {
-	color: var(--text-color-link-active);
-}
+
 
 main,
 footer {
@@ -342,14 +344,12 @@ main :first-child {
 	margin-top: 0;
 }
 
-header {
-	border-bottom: 1px dashed var(--color-gray-20);
-}
-header:after {
+
+/* header:after {
 	content: "";
 	display: table;
 	clear: both;
-}
+} */
 
 .links-nextprev {
 	display: flex;
@@ -410,9 +410,9 @@ header {
 	font-weight: 700;
 	margin-right: 2em;
 }
-.home-link:link:not(:hover) {
+/* .home-link:link:not(:hover) {
 	text-decoration: none;
-}
+} */
 
 /* Nav */
 .nav {
@@ -425,9 +425,9 @@ header {
 	display: inline-block;
 	margin-right: 1em;
 }
-.nav-item a[href]:not(:hover) {
+/* .nav-item a[href]:not(:hover) {
 	text-decoration: none;
-}
+} */
 .nav a[href][aria-current="page"] {
 	text-decoration: underline;
 }
@@ -593,7 +593,7 @@ console.log(memoizedIReturnNothing()); // iReturnNothing</code></pre>
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-03-26-javascript-memoize/` was built on 2024-10-24T06:19:41.582Z -->
+		<!-- This page `/blog/2024-03-26-javascript-memoize/` was built on 2024-10-24T06:27:54.754Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

@@ -1,11 +1,11 @@
 export default {
-	title: " - Eleventy",
+	title: "Antipodean",
 	url: "https://antipodean.blog/",
 	language: "en",
-	description: "I am writing about my experiences as a naval navel-gazer.",
+	description: "Personal website of Deepak.",
 	author: {
 		name: "Deepak",
-		email: "youremailaddress@example.com",
+		email: "",
 		url: "https://antipodean.com/about/"
 	}
 }

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Connect to AWS RDS instance using boto3 and Secret Manager</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,55 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="connect-to-aws-rds-instance-using-boto3-and-secret-manager">Connect to AWS RDS instance using boto3 and Secret Manager</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2023-03-02">02 March 2023</time></li>
+	<li><a href="/tags/aws/" class="post-tag">AWS</a>, </li>
+	<li><a href="/tags/python/" class="post-tag">Python</a></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<p>Code to connect to an AWS RDS instance with <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html">boto3</a> and Secret Manager</p>
+<pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">import</span> boto3
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> psycopg2
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+REGION <span class="token operator">=</span> <span class="token string">'&lt;region>'</span>
+PROFILE <span class="token operator">=</span> <span class="token string">'&lt;profile-name>'</span>
+SECRET_ARN <span class="token operator">=</span> <span class="token string">'&lt;Secret-ARN-From-Secret-Manager>'</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    session <span class="token operator">=</span> boto3<span class="token punctuation">.</span>Session<span class="token punctuation">(</span>profile_name<span class="token operator">=</span>PROFILE<span class="token punctuation">)</span>
+    client <span class="token operator">=</span> session<span class="token punctuation">.</span>client<span class="token punctuation">(</span><span class="token string">'secretsmanager'</span><span class="token punctuation">,</span> region_name<span class="token operator">=</span>REGION<span class="token punctuation">)</span>
+
+    <span class="token comment"># Get secret from Secret Manager</span>
+    secret <span class="token operator">=</span> client<span class="token punctuation">.</span>get_secret_value<span class="token punctuation">(</span>SecretId<span class="token operator">=</span>SECRET_ARN<span class="token punctuation">)</span>
+
+    <span class="token comment"># Load secrets into a dictionary</span>
+    secret_dict <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>secret<span class="token punctuation">[</span><span class="token string">'SecretString'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    username <span class="token operator">=</span> secret_dict<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+    password <span class="token operator">=</span> secret_dict<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+    host <span class="token operator">=</span> secret_dict<span class="token punctuation">[</span><span class="token string">'host'</span><span class="token punctuation">]</span>
+    port <span class="token operator">=</span> secret_dict<span class="token punctuation">[</span><span class="token string">'port'</span><span class="token punctuation">]</span>
+    database <span class="token operator">=</span> secret_dict<span class="token punctuation">[</span><span class="token string">'dbname'</span><span class="token punctuation">]</span>
+
+    <span class="token comment"># Make a connection</span>
+    conn<span class="token operator">=</span> psycopg2<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>
+            user<span class="token operator">=</span>username<span class="token punctuation">,</span>
+            password<span class="token operator">=</span>password<span class="token punctuation">,</span>
+            host<span class="token operator">=</span>host<span class="token punctuation">,</span>
+            port<span class="token operator">=</span>port<span class="token punctuation">,</span>
+            database<span class="token operator">=</span>database<span class="token punctuation">,</span>
+            connect_timeout<span class="token operator">=</span><span class="token number">10</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Connection created"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2022-05-01-few-thoughts-on-blogging/">Few thoughts on Blogging</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2023-08-21-working-with-env-files-in-python/">Working with env files in Python</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +575,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2023-03-02-connect-rds-secret-manager/` was built on 2024-10-24T05:02:08.544Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

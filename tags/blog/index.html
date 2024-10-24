@@ -17,6 +17,33 @@
 
 /* Theme colors from Catppuccin Mocha */
 :root {
+	--color-rosewater: #dc8a78;
+  --color-flamingo: #dd7878;
+  --color-pink: #ea76cb;
+  --color-mauve: #8839ef;
+  --color-red: #d20f39;
+  --color-maroon: #e64553;
+  --color-peach: #fe640b;
+  --color-yellow: #df8e1d;
+  --color-green: #40a02b;
+  --color-teal: #179299;
+  --color-sky: #04a5e5;
+  --color-sapphire: #209fb5;
+  --color-blue: #1e66f5;
+  --color-lavender: #7287fd;
+  --color-text: #4c4f69;
+  --color-subtext1: #5c5f77;
+  --color-subtext0: #6c6f85;
+  --color-overlay2: #7c7f93;
+  --color-overlay1: #8c8fa1;
+  --color-overlay0: #9ca0b0;
+  --color-surface2: #acb0be;
+  --color-surface1: #bcc0cc;
+  --color-surface0: #ccd0da;
+  --color-base: #eff1f5;
+  --color-mantle: #e6e9ef;
+  --color-crust: #dce0e8;
+
 	--color-gray-20: #f5e0dc; /* Latte */
 	--color-gray-50: #cdd6f4; /* Flamingo */
 	--color-gray-90: #45475a; /* Surface1 */
@@ -33,17 +60,54 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
+		--color-rosewater: #f5e0dc;
+	--color-flamingo: #f2cdcd;
+	--color-pink: #f5c2e7;
+	--color-mauve: #cba6f7;
+	--color-red: #f38ba8;
+	--color-maroon: #eba0ac;
+	--color-peach: #fab387;
+	--color-yellow: #f9e2af;
+	--color-green: #a6e3a1;
+	--color-teal: #94e2d5;
+	--color-sky: #89dceb;
+	--color-sapphire: #74c7ec;
+	--color-blue: #89b4fa;
+	--color-lavender: #b4befe;
+	--color-text: #cdd6f4;
+	--color-subtext1: #bac2de;
+	--color-subtext0: #a6adc8;
+	--color-overlay2: #9399b2;
+	--color-overlay1: #7f849c;
+	--color-overlay0: #6c7086;
+	--color-surface2: #585b70;
+	--color-surface1: #45475a;
+	--color-surface0: #313244;
+	--color-base: #1e1e2e;
+	--color-mantle: #181825;
+	--color-crust: #11111b;
+
 		--color-gray-20: #f5e0dc; /* Latte */
 		--color-gray-50: #cdd6f4; /* Flamingo */
 		--color-gray-90: #bac2de; /* Overlay2 */
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #89dceb; /* Cyan */
-		--text-color-link-active: #fab387; /* Peach */
+		--text-color-link: #cba6f7; /* Cyan */
+		--text-color-link-active: #cba6f7; /* Peach */
 		--text-color-link-visited: #cba6f7; /* Mauve */
 
 		--background-color: #1e1e2e; /* Base */
 	}
+	mark {
+		background: #89b4fa;
+		padding: 4px;
+		border-radius: 3px;
+	  }
+}
+
+.home-intro {
+	margin-top: 2.5rem!important;
+	margin-bottom: 4em;
 }
 
 /* Global stylesheet */
@@ -51,17 +115,13 @@
 	box-sizing: border-box;
 }
 
-@view-transition {
-	navigation: auto;
-}
-
 html,
 body {
+	background-color: var(--color-base);
 	padding: 0;
 	margin: 0 auto;
 	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
+	color: var(--color-text);
 }
 html {
 	overflow-y: scroll;
@@ -69,8 +129,12 @@ html {
 body {
 	max-width: 40em;
 }
+img {
+	max-width: 100%;
+	height: auto;
+  }
+ 
 
-/* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
@@ -149,7 +213,7 @@ code {
 }
 pre:not([class*="language-"]) {
 	margin: .5em 0;
-	line-height: 1.375; /* 22px /16 */
+	line-height: 1.375; 
 	-moz-tab-size: var(--syntax-tab-size);
 	-o-tab-size: var(--syntax-tab-size);
 	tab-size: var(--syntax-tab-size);
@@ -167,7 +231,6 @@ code {
 	word-break: break-all;
 }
 
-/* Header */
 header {
 	display: flex;
 	gap: 1em .5em;
@@ -176,7 +239,7 @@ header {
 	padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 1em; 
 	font-weight: 700;
 	margin-right: 2em;
 }
@@ -202,7 +265,6 @@ header {
 	text-decoration: underline;
 }
 
-/* Posts list */
 .postlist {
 	list-style: none;
 	padding: 0;
@@ -225,7 +287,7 @@ header {
 }
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
+	font-size: 0.8125em; 
 	color: var(--color-gray-90);
 }
 .postlist-date {
@@ -245,7 +307,6 @@ header {
 	font-weight: bold;
 }
 
-/* Tags */
 .post-tag {
 	display: inline-flex;
 	align-items: center;
@@ -279,7 +340,7 @@ header {
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/blog/">Blog</a></li>
 					<li class="nav-item"><a href="/about/">About</a></li>
 					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
 				</ul>
@@ -308,7 +369,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/tags/blog/` was built on 2024-10-24T01:38:12.196Z -->
+		<!-- This page `/tags/blog/` was built on 2024-10-24T05:02:08.692Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Get Indexes of Negative Numbers from a List in Python</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,48 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="get-indexes-of-negative-numbers-from-a-list-in-python">Get Indexes of Negative Numbers from a List in Python</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2024-02-07">07 February 2024</time></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<p>Today I was working on some code in which I had to get indexes of items in a list based on a condition. I found it interesting and thought of writing a post about a similar problem.</p>
+<p>Here it is.</p>
+<p>Given a list containing both positive and negative numbers, the goal is to find indexes of all negative numbers.</p>
+<pre class="language-python" tabindex="0"><code class="language-python">numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">]</span></code></pre>
+<p>To get indexes of all negative numbers, I used the <strong>enumerate</strong> function with a condition in a list comprehension.</p>
+<p>The <strong>enumerate</strong> function is a built-in function that returns an enumerable object. It contains pairs of indexes and values from a list.</p>
+<p>By combining enumerate with list comprehension, I can effectively get the indexes of all negative numbers.</p>
+<pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">find_negative_indexes</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    indexes <span class="token operator">=</span> <span class="token punctuation">[</span>index <span class="token keyword">for</span> index<span class="token punctuation">,</span> val <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span> <span class="token keyword">if</span> val <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> indexes</code></pre>
+<p>Printing the output of find_negative_indexes method</p>
+<pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>find_negative_indexes<span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>produces this output, showing a list of indexes of all negative numbers in the list.</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token punctuation">[</span><span class="token number">2</span>, <span class="token number">3</span>, <span class="token number">5</span><span class="token punctuation">]</span></code></pre>
+<p>I also like writing tests for all my code, so here is the complete script</p>
+<pre class="language-python" tabindex="0"><code class="language-python"><span class="token keyword">import</span> unittest
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+
+<span class="token keyword">def</span> <span class="token function">find_negative_indexes</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    indexes <span class="token operator">=</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i<span class="token punctuation">,</span> n <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span> <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> indexes
+
+
+<span class="token keyword">class</span> <span class="token class-name">TestFindNegativeIndexes</span><span class="token punctuation">(</span>unittest<span class="token punctuation">.</span>TestCase<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">test_find_negative_indexes</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>assertEqual<span class="token punctuation">(</span>find_negative_indexes<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>assertEqual<span class="token punctuation">(</span>find_negative_indexes<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>assertEqual<span class="token punctuation">(</span>find_negative_indexes<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>assertEqual<span class="token punctuation">(</span>find_negative_indexes<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    unittest<span class="token punctuation">.</span>main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Happy Coding!</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-02-05-typescript-7-tips/">7 Essentials for Learning TypeScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-02-16-working-from-home/">How Working From Home Changed My Life</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +568,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2024-02-07-python-indexes-of-negative-numbers/` was built on 2024-10-24T05:02:08.547Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Writing Langton&#39;s Ant in Python</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,206 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="writing-langtons-ant-in-python">Writing Langton&#39;s Ant in Python</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2024-10-15">15 October 2024</time></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<p>I was looking for a fun little exercise I could write in Python and I came across Langton's Ant. According to Wikipedia:</p>
+<blockquote>
+<p>Langton's ant is a two-dimensional Turing machine with a very simple set of rules but complex emergent behavior. It was invented by Chris Langton in 1986 and runs on a square lattice of black and white cells.</p>
+</blockquote>
+<p>This could be fun, I thought. I started writing the code and quickly realised that I need a library which can be used to draw basic graphics. I came across <a href="https://www.pygame.org/wiki/about">pygame</a>. Pygame is simple, easy to understand and suitable for my basic needs.</p>
+<p>I got the code done in short time and enjoyed watching the patterns being created by the code I wrote.</p>
+<p>Writing code which works is a good feeling. A better feeling is to make the code beautiful. This post is all about making the code suck less.</p>
+<p>Before I get into chopping and carving, this is the working code.</p>
+<pre class="language-Python" tabindex="0"><code class="language-Python">import pygame
+from pygame.constants import QUIT
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+#         If the ant is on a white cell:
+#             Turn 90 degrees to the right (clockwise).
+#             Flip the color of the cell to black.
+#             Move forward one cell.
+#         If the ant is on a black cell:
+#             Turn 90 degrees to the left (counterclockwise).
+#             Flip the color of the cell to white.
+#             Move forward one cell.
+#
+# The process repeats for each step of the ant’s movement, and over time, interesting patterns emerge.
+
+
+class Ant:
+    def __init__(self, x, y, upper_bound, cell_size, direction=0) -> None:
+        self.x = x
+        self.y = y
+        self.upper_bound = upper_bound
+        self.cell_size = cell_size
+        self.direction = direction
+        self.directions = ["up", "right", "down", "left"]
+
+    def move_forward(self):
+        if self.direction == 0:
+            self.move_up()
+        elif self.direction == 1:
+            self.move_right()
+        elif self.direction == 2:
+            self.move_down()
+        elif self.direction == 3:
+            self.move_left()
+
+    def turn_right(self):
+        self.direction = (self.direction + 1) % len(self.directions)
+
+    def turn_left(self):
+        self.direction = (self.direction - 1) % len(self.directions)
+
+    def move_up(self):
+        if self.y == 0:
+            self.y = self.upper_bound
+        else:
+            self.y = self.y - self.cell_size
+
+    def move_down(self):
+        if self.y == self.upper_bound:
+            self.y = 0
+        else:
+            self.y = self.y + self.cell_size
+
+    def move_left(self):
+        if self.x == 0:
+            self.x = self.upper_bound
+        else:
+            self.x = self.x - self.cell_size
+
+    def move_right(self):
+        if self.x == self.upper_bound:
+            self.x = 0
+        else:
+            self.x = self.x + self.cell_size
+
+
+pygame.init()
+
+def main():
+    WHITE = "white"
+    BLACK = "black"
+    WIDTH = 1200
+    HEIGHT = 1200
+    CELL_SIZE = 5
+    SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+    CLOCK = pygame.time.Clock()
+    running = True
+
+    SCREEN.fill("black")
+
+    GRID = {}
+    grid_list = []
+    for x in range(0, WIDTH, CELL_SIZE):
+        for y in range(0, HEIGHT, CELL_SIZE):
+            grid_list.append((x, y))
+
+    for item in grid_list:
+        GRID[item] = WHITE
+
+    # print(GRID)
+
+    middle_x = (WIDTH // CELL_SIZE) // 2 * CELL_SIZE
+    middle_y = (HEIGHT // CELL_SIZE) // 2 * CELL_SIZE
+
+    ant = Ant(middle_x, middle_y, WIDTH - CELL_SIZE, CELL_SIZE)
+
+    def move_ant():
+        is_white = GRID[(ant.x, ant.y)] == WHITE
+        # ant.move_right()
+        if is_white:
+            GRID[(ant.x, ant.y)] = BLACK
+            ant.turn_right()
+        else:
+            GRID[(ant.x, ant.y)] = WHITE
+            ant.turn_left()
+
+        ant.move_forward()
+
+    def draw_grid():
+        for cell in GRID:
+            rect = pygame.Rect(cell[0], cell[1], CELL_SIZE - 2, CELL_SIZE - 2)
+            pygame.draw.rect(SCREEN, GRID[(cell[0], cell[1])], rect)
+
+    while running:
+        draw_grid()
+        move_ant()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        pygame.display.update()
+
+        CLOCK.tick(60)
+
+    pygame.quit()
+
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<p>So let's get started. There are two objects involved in the program. An <strong>ant</strong> which moves on a <strong>grid</strong>.</p>
+<p>I don't have a grid class so I'll start with that. What data and behaviour should the grid have?</p>
+<p>It should have cells which I will represent as a dictionary where the key will be a tuple and value will be the color of the cell. Something like this</p>
+<p>I already have an Ant class which looks like this.</p>
+<pre class="language-Python" tabindex="0"><code class="language-Python">class Ant:
+    def __init__(self, x, y, upper_bound, cell_size, direction=0) -> None:
+        self.x = x
+        self.y = y
+        self.upper_bound = upper_bound
+        self.cell_size = cell_size
+        self.direction = direction
+        self.directions = ["up", "right", "down", "left"]
+
+    def move_forward(self):
+        if self.direction == 0:
+            self.move_up()
+        elif self.direction == 1:
+            self.move_right()
+        elif self.direction == 2:
+            self.move_down()
+        elif self.direction == 3:
+            self.move_left()
+
+    def turn_right(self):
+        self.direction = (self.direction + 1) % len(self.directions)
+
+    def turn_left(self):
+        self.direction = (self.direction - 1) % len(self.directions)
+
+    def move_up(self):
+        if self.y == 0:
+            self.y = self.upper_bound
+        else:
+            self.y = self.y - self.cell_size
+
+    def move_down(self):
+        if self.y == self.upper_bound:
+            self.y = 0
+        else:
+            self.y = self.y + self.cell_size
+
+    def move_left(self):
+        if self.x == 0:
+            self.x = self.upper_bound
+        else:
+            self.x = self.x - self.cell_size
+
+    def move_right(self):
+        if self.x == self.upper_bound:
+            self.x = 0
+        else:
+            self.x = self.x + self.cell_size
+</code></pre>
+<p>The other day I was watching TV and browsing
+I remember writing Conway's game of life in C++.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-10-02-desk-cleanup/">Desk Cleanup 2024</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-23-beyond-code/">Beyond Code</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +726,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2024-10-15-python-langtons-ant/` was built on 2024-10-24T05:02:08.548Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

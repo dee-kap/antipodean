@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Mastering Ruby Blocks: A Comprehensive Guide</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,96 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="mastering-ruby-blocks-a-comprehensive-guide">Mastering Ruby Blocks: A Comprehensive Guide</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2024-01-15">15 January 2024</time></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<h2 id="introduction">Introduction</h2>
+<p>In Ruby, blocks stand as one of the language's most unique and powerful features. They allow you to encapsulate code into discrete units, making your programs more modular, flexible, and expressive. In this article, we will explore the mechanics of Ruby blocks, the versatility of the yield statement, and their practical applications, especially in conjunction with methods which return enumerators.</p>
+<h2 id="what-are-blocks-in-ruby">What are Blocks in Ruby?</h2>
+<p>A block in Ruby is essentially an anonymous piece of code that can be passed to methods as arguments. Blocks can contain multiple lines of code and are crucial in Ruby's approach to iteration and callbacks.</p>
+<h2 id="understanding-enumerators">Understanding Enumerators</h2>
+<p>Before diving into blocks, let's consider Ruby's enumerators. An enumerator is an object that allows iteration over a collection, one element at a time. For instance, when you call the times method without a block, Ruby returns an Enumerator object:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby">enumerator <span class="token operator">=</span> <span class="token number">4.</span>times
+enumerator<span class="token punctuation">.</span>inspect
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+<span class="token comment"># => #&lt;Enumerator: 4:times></span></code></pre>
+<p>This Enumerator can then be used with methods like next or peek. However, while useful, this is just the tip of the iceberg.</p>
+<h2 id="the-power-of-blocks">The Power of Blocks</h2>
+<p>Blocks transform methods like times from simple iterators into versatile tools.</p>
+<p>Consider this example:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token number">4.</span>times <span class="token punctuation">{</span> puts <span class="token string-literal"><span class="token string">"hello"</span></span> <span class="token punctuation">}</span>
+
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># => 4</span></code></pre>
+<p>Here, 4.times no longer returns an Enumerator; instead, it executes the block <strong>{ puts &quot;hello&quot; }</strong> four times. This functionality showcases the primary strength of blocks - their ability to add custom behavior to methods.</p>
+<h2 id="syntax-variations">Syntax Variations</h2>
+<p>Blocks in Ruby can be defined with either curly braces {} for single-line blocks or <strong>do...end</strong> for multi-line blocks:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token number">4.</span>times <span class="token keyword">do</span>
+  puts <span class="token string-literal"><span class="token string">"hello"</span></span>
+<span class="token keyword">end</span>
+
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># => 4</span></code></pre>
+<p>The do...end syntax is particularly useful for complex blocks:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token number">4.</span>times <span class="token keyword">do</span>
+  name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Deepak"</span></span>
+  puts <span class="token string-literal"><span class="token string">"hello </span><span class="token interpolation"><span class="token delimiter punctuation">#{</span><span class="token content">name</span><span class="token delimiter punctuation">}</span></span><span class="token string">"</span></span>
+<span class="token keyword">end</span>
+
+<span class="token comment"># hello Deepak</span>
+<span class="token comment"># hello Deepak</span>
+<span class="token comment"># hello Deepak</span>
+<span class="token comment"># hello Deepak</span>
+<span class="token comment"># => 4</span></code></pre>
+<h2 id="blocks-with-arguments">Blocks with Arguments</h2>
+<p>Blocks become even more powerful when they accept arguments. Consider iterating over an array with the each method:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"Deepak"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Bill"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"Steve"</span></span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>name<span class="token operator">|</span>
+ <span class="token punctuation">.</span>  puts <span class="token string-literal"><span class="token string">"hello </span><span class="token interpolation"><span class="token delimiter punctuation">#{</span><span class="token content">name</span><span class="token delimiter punctuation">}</span></span><span class="token string">"</span></span>
+<span class="token keyword">end</span>
+
+<span class="token comment"># hello Deepak</span>
+<span class="token comment"># hello Bill</span>
+<span class="token comment"># hello Steve</span>
+<span class="token comment"># => ["Deepak", "Bill", "Steve"]</span></code></pre>
+<p>In this example, the each method passes each array element to the block, enabling dynamic content generation.
+Exploring the Yield Statement</p>
+<p>A key aspect of working with blocks is understanding the yield statement. In Ruby, yield transfers control from the method to the block, creating opportunities for more dynamic and flexible code.</p>
+<h2 id="yield-in-action">Yield in Action</h2>
+<p>Here's a simple demonstration of yield:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token keyword">def</span> <span class="token method-definition"><span class="token function">greeting</span></span>
+  puts <span class="token string-literal"><span class="token string">"Hello!"</span></span>
+  <span class="token keyword">yield</span> <span class="token keyword">if</span> block_given<span class="token operator">?</span>
+  puts <span class="token string-literal"><span class="token string">"Goodbye!"</span></span>
+<span class="token keyword">end</span>
+
+greeting <span class="token keyword">do</span>
+  puts <span class="token string-literal"><span class="token string">"Nice to meet you."</span></span>
+<span class="token keyword">end</span></code></pre>
+<p>This code produces:</p>
+<pre class="language-bash" tabindex="0"><code class="language-bash">Hello<span class="token operator">!</span>
+Nice to meet you.
+Goodbye<span class="token operator">!</span></code></pre>
+<p>The process unfolds as follows:</p>
+<ol>
+<li>The method prints &quot;Hello!&quot;.</li>
+<li>Upon encountering yield, the method calls the provided block, printing &quot;Nice to meet you.&quot;.</li>
+<li>Control then returns to the greeting method, concluding with &quot;Goodbye!&quot;.</li>
+</ol>
+<h2 id="benefits-of-yield">Benefits of Yield</h2>
+<p>The use of yield allows for methods that are more adaptable and general-purpose, as the specifics are defined in the accompanying block. This leads to code that is both modular and expressive.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Ruby blocks, with their ability to encapsulate code and work seamlessly with methods via yield, are indispensable for Ruby programmers. They enable writing flexible, maintainable, and expressive code, showcasing Ruby's elegance and power.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-01-14-nostalgic-turn/">Codecamp OZ: A Nostalgic Dive Into The Archives of the Web</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-01-23-ruby-symbols/">Understanding Symbols in Ruby Programming Language</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +616,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2024-01-14-ruby-blocks/` was built on 2024-10-24T05:02:08.547Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Understanding Symbols in Ruby Programming Language</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,48 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="understanding-symbols-in-ruby-programming-language">Understanding Symbols in Ruby Programming Language</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2024-01-23">23 January 2024</time></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<h2 id="what-is-a-symbol-in-ruby">What is a Symbol in Ruby?</h2>
+<p>In Ruby, a symbol is a lightweight, immutable identifier. It is often used in situations where a string would traditionally be used, but it offers performance benefits. Symbols are denoted by a colon (:) followed by a name. For example, <strong>:user</strong> and <strong>:email</strong> are symbols.</p>
+<h2 id="key-characteristics-of-symbols">Key Characteristics of Symbols</h2>
+<ol>
+<li>
+<p>Immutability: Unlike strings, symbols are immutable. Once a symbol is created, it cannot be altered. This property makes them safe to use as identifiers or keys in hashes.</p>
+</li>
+<li>
+<p>Uniqueness: Each symbol is unique throughout a Ruby program. No matter where in the program it's used, a symbol represents the same value or state.</p>
+</li>
+<li>
+<p>Efficient: Symbols are more memory-efficient than strings. Since they are unique, Ruby internally stores each symbol only once, reducing memory usage and speeding up comparisons.</p>
+</li>
+</ol>
+<h2 id="common-uses-of-symbols-in-ruby">Common Uses of Symbols in Ruby</h2>
+<h3 id="as-hash-keys">As Hash Keys</h3>
+<p>One of the most common uses of symbols is as keys in hashes. Since they are immutable and unique, they are perfect for identifying values within a hash. For example:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby">user <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token symbol">:name</span> <span class="token operator">=></span> <span class="token string-literal"><span class="token string">"Alice"</span></span><span class="token punctuation">,</span> <span class="token symbol">:age</span> <span class="token operator">=></span> <span class="token number">30</span><span class="token punctuation">}</span></code></pre>
+<h3 id="method-and-constant-names">Method &amp; Constant Names</h3>
+<p>In Ruby, method names and constant names are internally symbols. This is part of Ruby’s design, which treats everything as an object, including method names and constants.</p>
+<h3 id="representing-states-or-options">Representing States or Options</h3>
+<p>Symbols are often used to represent states, options, or specific conditions within a program, largely because of their readability and symbolic nature.</p>
+<h3 id="comparison-with-strings">Comparison with Strings</h3>
+<p>While symbols are similar to strings, they are not the same. The key difference lies in their identity and immutability. Two strings with the same content are considered different objects, while two symbols with the same name are exactly the same object.</p>
+<p>For example:</p>
+<pre class="language-ruby" tabindex="0"><code class="language-ruby"><span class="token string-literal"><span class="token string">"string"</span></span> <span class="token operator">==</span> <span class="token string-literal"><span class="token string">"string"</span></span> <span class="token comment"># true, but they are different objects</span>
+<span class="token symbol">:symbol</span> <span class="token operator">==</span> <span class="token symbol">:symbol</span> <span class="token comment"># true, and they are the same object</span></code></pre>
+<h2 id="when-to-use-symbols">When to Use Symbols</h2>
+<ul>
+<li>Use symbols when an identifier is needed. They are perfect for keys in hashes, representing method names, states, or labels that do not need the flexibility of a string.</li>
+<li>Avoid using symbols when you need string-like behavior, such as concatenation, or when the text is user-generated and not a fixed identifier.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Symbols in Ruby offer a unique and efficient way to handle identifiers within your code. Their immutability, uniqueness, and memory efficiency make them a preferred choice for keys in hashes, representing method names, and more. Understanding when and how to use symbols can greatly enhance Ruby programming experience.</p>
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-01-14-ruby-blocks/">Mastering Ruby Blocks: A Comprehensive Guide</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-02-05-rails-ensure-only-one-record/">Handling Single Record Queries in Rails with Grace</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +568,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2024-01-23-ruby-symbols/` was built on 2024-10-24T05:02:08.547Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

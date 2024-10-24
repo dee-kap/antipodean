@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Desk Cleanup 2024</title>
+		<title>Write Your Own Memoize in JavaScript</title>
 		<meta name="description" content="Personal website of Deepak.">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Antipodean">
 		
@@ -517,20 +517,73 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				
-<h1 id="desk-cleanup-2024">Desk Cleanup 2024</h1>
+<h1 id="write-your-own-memoize-in-javascript">Write Your Own Memoize in JavaScript</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-10-02">02 October 2024</time></li>
-	<li><a href="/tags/productivity/" class="post-tag">productivity</a></li>
+	<li><time datetime="2024-03-27">27 March 2024</time></li>
 </ul>
 
-<p>Few days ago I bought a monitor stand which came in today. It is a Meatanty Dual Monitor Stand Riser with 2 Drawers, 4 Usb Ports and Charging Pad. Recently I made some ergonomic changes to my working environment like changing to a vertical mouse. Although I do not have RSI yet, but sometimes I feel a little bit of pain in my wrist. Before it gets any worse, I have started making some changes to my environment.</p>
-<p>Getting a monitor stand is part of these ergonomic changes. I noticed that I bend my neck slightly to look at the screen. This may not be the best in long term and with the stand, I see the monitor at my natural eye level.</p>
-<p>As I was setting up the stand, I decided to embark on the quest of cleaning my desk which was slowly turning into a museum of all sorts of useless things. Nothing too revolutionary, just removing the clutter which unnecessarily occupied space and added zero value. At the end I'm proud of my achievement. Here is the obligatory photo of what it looks like as I'm writing this post.</p>
-<p><picture><source type="image/avif" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.avif 4000w"><source type="image/webp" srcset="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.webp 4000w"><img loading="lazy" decoding="async" src="/blog/2024-10-02-desk-cleanup/I6UCUSvtsj-4000.jpeg" alt="Clean Desk" width="4000" height="1800"></picture></p>
-<p>Now let's get real. Soon I will have a bunch of other things (clutter) which will occupy most of the zen like space I have now. But, I will try to keep it like this or at least get into a routine of cleaning it up once a week. Until then, I'll enjoy the serenity in my room.</p>
+<p>We often default to using NPM modules for minor utility functions that could be straightforwardly implemented ourselves. While I have no issues with popular libraries like Lodash or Ramda, I believe they are often overutilized for tasks that can be accomplished with basic code.</p>
+<p>I'll guide you through crafting your own memoize function. Memoization is an optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again. Here's how it works:</p>
+<ol>
+<li>Execute your function with some or no arguments.</li>
+<li>The function computes and returns a result.</li>
+<li>On subsequent executions with the same arguments, the function retrieves and returns the result from the cache instead of recomputing it.</li>
+</ol>
+<p>Below is the implementation for a basic memoize function:</p>
+<pre class="language-JavaScript" tabindex="0"><code class="language-JavaScript">function memoize(fn) {
+  const cache = {};
 
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-26-javascript-memoize/">Write Your Own Memoize in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-15-python-langtons-ant/">Writing Langton&#39;s Ant in Python</a></li>
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (!(key in cache)) {
+      const result = fn(...args);
+      cache[key] = result;
+    }
+    return cache[key];
+  };
+}</code></pre>
+<p>Using the memoize function</p>
+<p>First, define a function you wish to memoize. For instance:</p>
+<pre class="language-JavaScript" tabindex="0"><code class="language-JavaScript">function add(a, b) {
+  console.log("Called add");
+  return a + b;
+}</code></pre>
+<p>Then, create a memoized version of this function:</p>
+<pre class="language-JavaScript" tabindex="0"><code class="language-JavaScript">const memoizedAdd = memoize(add);</code></pre>
+<p>Upon calling the memoizedAdd function with arguments, you'll observe the initial call logs &quot;Called add&quot; and returns the sum:</p>
+<pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token function">memoizedAdd</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// called add</span>
+<span class="token comment">// 3</span></code></pre>
+<p>Repeating the call with the same arguments does not log &quot;Called add&quot; again but directly returns 3, demonstrating the memoization effect:</p>
+<pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token function">memoizedAdd</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 3</span></code></pre>
+<p>However, calling it with different arguments triggers the original add function:</p>
+<pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token function">memoizedAdd</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// called add</span>
+<span class="token comment">// 5</span></code></pre>
+<p>Be cautious with attempting to simplify the memoize function excessively. Consider this terse version:</p>
+<pre class="language-JavaScript" tabindex="0"><code class="language-JavaScript">function memoize(fn) {
+  const cache = {};
+
+  return function (...args) {
+    const key = JSON.stringify(args);
+    cache[key] = cache[key] || fn(...args);
+    return cache[key];
+  };
+}</code></pre>
+<p>This approach might seem elegant, but it fails for functions that do not return a value, demonstrating that simplicity and readability often outweigh cleverness:</p>
+<pre class="language-JavaScript" tabindex="0"><code class="language-JavaScript">function iReturnNothing() {
+  console.log("iReturnNothing");
+}
+
+const memoizedIReturnNothing = memoize(iReturnNothing);
+
+console.log(memoizedIReturnNothing()); // iReturnNothing
+console.log(memoizedIReturnNothing()); // iReturnNothing</code></pre>
+<p>This issue reveals that the function was called twice, contrary to our expectations for memoization. Hence, it's preferable to embrace simplicity and clarity over brevity.</p>
+
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2024-03-20-clear-timeout-javascript/">Cancel setTimeout in JavaScript</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2024-10-02-desk-cleanup/">Desk Cleanup 2024</a></li>
 </ul>
 
 			</heading-anchors>
@@ -540,7 +593,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-10-02-desk-cleanup/` was built on 2024-10-24T05:02:08.548Z -->
+		<!-- This page `/blog/2024-03-26-javascript-memoize/` was built on 2024-10-24T05:02:08.548Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

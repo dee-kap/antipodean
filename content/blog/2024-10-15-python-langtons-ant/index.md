@@ -5,6 +5,7 @@ category:
 tags: 
 featured_image: 
 summary: 
+draft: true
 ---
 
 I was looking for a fun little exercise I could write in Python and I came across Langton's Ant. According to Wikipedia:

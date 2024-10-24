@@ -5,6 +5,7 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
+import {DateTime } from 'luxon'
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -14,6 +15,16 @@ export default async function(eleventyConfig) {
 			return false;
 		}
 	});
+
+	  eleventyConfig.addCollection("blog", function(collectionApi) {
+		return collectionApi.getFilteredByGlob("content/blog/*.md").map((post) => {
+		  const date = new Date(post.date);
+		  const year = date.getFullYear();
+		  const month = String(date.getMonth() + 1).padStart(2, "0");
+		  post.data.permalink = `/${year}/${month}/${post.fileSlug}/`;
+		  return post;
+		});
+	  });
 
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
@@ -109,6 +120,11 @@ export default async function(eleventyConfig) {
 	// https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+
+	// filters
+	eleventyConfig.addFilter("date", (dateObj, format = "yyyy/MM/dd") => {
+		return DateTime.fromJSDate(dateObj).toFormat(format);
+	  });
 };
 
 export const config = {

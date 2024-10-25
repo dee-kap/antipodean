@@ -13,147 +13,137 @@
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
-}
-
-/* Theme colors from Catppuccin Mocha */
-:root {
-	--color-rosewater: #dc8a78;
-  --color-flamingo: #dd7878;
-  --color-pink: #ea76cb;
-  --color-mauve: #8839ef;
-  --color-red: #d20f39;
-  --color-maroon: #e64553;
-  --color-peach: #fe640b;
-  --color-yellow: #df8e1d;
-  --color-green: #40a02b;
-  --color-teal: #179299;
-  --color-sky: #04a5e5;
-  --color-sapphire: #209fb5;
-  --color-blue: #1e66f5;
-  --color-lavender: #7287fd;
-  --color-text: #4c4f69;
-  --color-subtext1: #5c5f77;
-  --color-subtext0: #6c6f85;
-  --color-overlay2: #7c7f93;
-  --color-overlay1: #8c8fa1;
-  --color-overlay0: #9ca0b0;
-  --color-surface2: #acb0be;
-  --color-surface1: #bcc0cc;
-  --color-surface0: #ccd0da;
-  --color-base: #eff1f5;
-  --color-mantle: #e6e9ef;
-  --color-crust: #dce0e8;
-
-	--color-gray-20: #f5e0dc; /* Latte */
-	--color-gray-50: #cdd6f4; /* Flamingo */
-	--color-gray-90: #45475a; /* Surface1 */
-
-	--text-color: var(--color-gray-90);
-	--text-color-link: #89b4fa; /* Blue */
-	--text-color-link-active: #f38ba8; /* Pink */
-	--text-color-link-visited: #b4befe; /* Lavender */
-
 	--syntax-tab-size: 2;
+	--background-color: #eff1f5;
+	--text-color: #4c4f69;
+	--color-border-header: #dc8a78;
+	--color-green: #94e2d5;
+	--color-blue: #1e66f5;
+	--color-mauve: #8839ef;
+	--color-yellow: #df8e1d;
+	--color-lavender: #7287fd;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-	--color-rosewater: #f5e0dc;
-	--color-flamingo: #f2cdcd;
-	--color-pink: #f5c2e7;
-	--color-mauve: #cba6f7;
-	--color-red: #f38ba8;
-	--color-maroon: #eba0ac;
-	--color-peach: #fab387;
-	--color-yellow: #f9e2af;
+#theme-toggle {
+	background-color: var(--background-color);
+	color: #000000;
+	border: none;
+	font-size: 2em;
+}
+
+[data-theme='dark'] {
+	--background-color: #1e1e2e;
+	--text-color: #cdd6f4;
+	--color-border-header: #f5e0dc;
 	--color-green: #a6e3a1;
-	--color-teal: #94e2d5;
-	--color-sky: #89dceb;
-	--color-sapphire: #74c7ec;
 	--color-blue: #89b4fa;
+	--color-mauve: #cba6f7;
+	--color-yellow: #f9e2af;
 	--color-lavender: #b4befe;
-	--color-text: #cdd6f4;
-	--color-subtext1: #bac2de;
-	--color-subtext0: #a6adc8;
-	--color-overlay2: #9399b2;
-	--color-overlay1: #7f849c;
-	--color-overlay0: #6c7086;
-	--color-surface2: #585b70;
-	--color-surface1: #45475a;
-	--color-surface0: #313244;
-	--color-base: #1e1e2e;
-	--color-mantle: #181825;
-	--color-crust: #11111b;
 
-		--color-gray-20: #f5e0dc; /* Latte */
-		--color-gray-50: #cdd6f4; /* Flamingo */
-		--color-gray-90: #bac2de; /* Overlay2 */
+	#theme-toggle {
+		background-color: var(--background-color);
+		color: #ffffff;
+	}
+}
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #cba6f7; /* Cyan */
-		--text-color-link-active: #cba6f7; /* Peach */
-		--text-color-link-visited: #cba6f7; /* Mauve */
+* {
+	box-sizing: border-box;
+}
 
-	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		color: var(--color-mauve)
-	}
-	
-	mark {
-		background: var(--color-green);
-		padding: 4px;
-		border-radius: 3px;
-	  }
+body {
+	max-width: 720px;
+	padding: 15px;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	background-color: var(--background-color);
+	color: var(--text-color)
+}
 
-	  a[href] {
-		color: var(--color-blue);
-	}
-	a[href]:visited {
-		color: var(--color-blue);
-	}
-	a[href]:hover,
-	a[href]:active {
-		color: var(--color-blue);
-	}
-	header {
-		border-bottom: 1px dashed var(--color-rosewater);
-	}
-  
+
+a {
+	color: var(--color-blue)
+}
+
+a:visited {
+	color: var(--color-blue)
+}
+
+a:hover,
+a:focus {
+	color: var(--color-blue)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-mauve)
+}
+
+.home-link {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	padding-bottom: 1.5em;
+	border-bottom: 1px dashed var(--color-border-header);
+}
+
+header a {
+	color: var(--color-mauve)
+}
+
+header a:visited {
+	color: var(--color-mauve)
+}
+
+header a:hover,
+header a:focus {
+	color: var(--color-mauve)
+}
+
+nav {
+	display: flex;
+	flex-grow: 1;
+}
+
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
 }
 
 .home-intro {
 	margin-bottom: 4em;
 }
 
-/* Global stylesheet */
-* {
-	box-sizing: border-box;
-}
-
-html,
-body {
-	background-color: var(--color-base);
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--color-text);
-}
-html {
-	overflow-y: scroll;
-}
-body {
-	max-width: 720px;
-}
 img {
 	max-width: 100%;
 	height: auto;
-  }
- 
+}
+
+mark {
+	background: var(--color-green);
+	padding: 4px;
+	border-radius: 3px;
+}
+
 
 .visually-hidden {
 	clip: rect(0 0 0 0);
@@ -165,9 +155,6 @@ img {
 	width: 1px;
 }
 
-p:last-child {
-	margin-bottom: 0;
-}
 p {
 	line-height: 1.6;
 }
@@ -176,104 +163,12 @@ li {
 	line-height: 2;
 }
 
-
-
-main,
-footer {
-	padding: 1rem;
-}
-
-/* header:after {
-	content: "";
-	display: table;
-	clear: both;
-} */
-
-.links-nextprev {
-	display: flex;
-	justify-content: space-between;
-	gap: .5em 1em;
-	list-style: "";
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
-}
-.links-nextprev > * {
-	flex-grow: 1;
-}
-.links-nextprev-next {
-	text-align: right;
-}
-
-table {
-	margin: 1em 0;
-}
-table td,
-table th {
-	padding-right: 1em;
-}
-
-pre,
-code {
-	font-family: var(--font-family-monospace);
-}
-pre:not([class*="language-"]) {
-	margin: .5em 0;
-	line-height: 1.375; 
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	overflow-x: auto;
-}
-code {
-	word-break: break-all;
-}
-
-header {
-	display: flex;
-	gap: 1em .5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
-}
-.home-link {
-	font-size: 1em; 
-	font-weight: 700;
-}
-/* .home-link:link:not(:hover) {
-	text-decoration: none;
-} */
-
-/* Nav */
-.nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-.nav-item {
-	display: inline-block;
-	margin-right: 1em;
-}
-/* .nav-item a[href]:not(:hover) {
-	text-decoration: none;
-} */
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
-}
-
 .postlist {
 	list-style: none;
 	padding: 0;
 	padding-left: 1.5rem;
 }
+
 .postlist-item {
 	display: flex;
 	flex-wrap: wrap;
@@ -281,6 +176,7 @@ header {
 	counter-increment: start-from -1;
 	margin-bottom: 1em;
 }
+
 .postlist-item:before {
 	display: inline-block;
 	pointer-events: none;
@@ -289,16 +185,19 @@ header {
 	text-align: right;
 	margin-left: -1.5rem;
 }
+
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; 
+	font-size: 0.8125em;
 	color: var(--color-gray-90);
 }
+
 .postlist-date {
 	word-spacing: -0.5px;
 }
+
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
+	font-size: 1.1875em;
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
 	padding-left: .25em;
@@ -307,6 +206,7 @@ header {
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
 }
+
 .postlist-item-active .postlist-link {
 	font-weight: bold;
 }
@@ -318,11 +218,11 @@ header {
 	text-transform: capitalize;
 	font-style: italic;
 }
-.postlist-item > .post-tag {
+
+.postlist-item>.post-tag {
 	align-self: center;
 }
 
-/* Tags list */
 .post-metadata {
 	display: inline-flex;
 	flex-wrap: wrap;
@@ -331,9 +231,30 @@ header {
 	padding: 0;
 	margin: 0;
 }
+
 .post-metadata time {
 	margin-right: 1em;
 }
+
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-border-header);
+	padding: 1em 0;
+	margin-top: 3em;
+}
+
+.links-nextprev>* {
+	flex-grow: 1;
+}
+
+.links-nextprev-next {
+	text-align: right;
+}
+
 
 .books-list {
 	display: flex;
@@ -341,24 +262,25 @@ header {
 	justify-content: center;
 	gap: 8px;
 	padding-top: 24px;
-  }
-  
-  .books-list .book {
+}
+
+.books-list .book {
 	position: relative;
-	width: 100px; 
-	height: 150px; 
+	width: 100px;
+	height: 150px;
 	margin-bottom: 8px;
-	background-size: cover; 
-	background-position: center; 
-	border-radius: 3px; 
-	border: 3px solid var(--color-lavender)
-  }
-  .books-list .book:hover {
-	border-color: var(--color-yellow); 
-	box-shadow: 0 0 10px 5px var(--color-yellow); 
-  }
-  
-  .book-title {
+	background-size: cover;
+	background-position: center;
+	border-radius: 3px;
+	border: 3px solid var(--color-lavender);
+}
+
+.books-list .book:hover {
+	border-color: var(--color-yellow);
+	box-shadow: 0 0 10px 5px var(--color-yellow);
+}
+
+.book-title {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -372,31 +294,48 @@ header {
 	text-align: center;
 	font-size: 12px;
 	font-weight: bold;
-  }
+}
 
-  .books-list .book:hover .book-title {
+.books-list .book:hover .book-title {
 	color: var(--color-blue);
-  }
-  
-  .book-rating {
-	font-size: 14px;
-  }
+}
 
-  .star {
-	color: #ccc; 
-	opacity: 0.6; 
-	text-shadow: 0 0 1px #666; 
-  }
-  
-  .star.filled {
-	color: #ffd700; 
-	opacity: 1; 
-	text-shadow: none; 
-  }
-  .star.filled.six {
-	color: #dc143c; 
+.book-rating {
+	font-size: 14px;
+}
+
+.star {
+	color: #ccc;
+	opacity: 0.6;
+	text-shadow: 0 0 1px #666;
+}
+
+.star.filled {
+	color: #ffd700;
+	opacity: 1;
+	text-shadow: none;
+}
+
+.star.filled.six {
+	color: #dc143c;
 	font-size: 1.25em;
-  }</style>
+}</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			const toggleButton = document.getElementById('theme-toggle');
+			const currentTheme = localStorage.getItem('theme') || 'dark';
+
+			if (currentTheme) {
+				document.documentElement.setAttribute('data-theme', currentTheme);
+			}
+
+			toggleButton.addEventListener('click', () => {
+				const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			});
+			});
+		</script>
 	</head>
 	    <link href="//prismjs.catppuccin.com/mocha.css" rel="stylesheet">
 	<body>
@@ -415,6 +354,10 @@ header {
 					<li class="nav-item"><a href="/pages/">Pages</a></li>
 				</ul>
 			</nav>
+			<button id="theme-toggle" aria-label="Toggle theme">
+				●
+			</button>
+
 		</header>
 
 		<main id="skip">
@@ -443,7 +386,7 @@ header {
 		<footer>
 		</footer>
 
-		<!-- This page `/tags/vim/` was built on 2024-10-25T09:38:47.089Z -->
+		<!-- This page `/tags/vim/` was built on 2024-10-25T11:06:59.987Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

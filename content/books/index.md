@@ -4,13 +4,17 @@ layout: layouts/base.njk
 
 # Books
 
-Reading books is one of my favourite pass times. I feel blessed that I picked up this habit during my high school days and it has stayed with me since then.
+Reading books is one of my favourite pass times. I like to read all kinds of books including Non-Fiction, History, Science, Biographies, Finance, Classics.
 
-<div style="font-size:18px">
+First book I ever read was Dracula by Bram Stoker and that got me hooked on reading.
+
+These are some of the books I have in my library. I have given a star rating to the books I have read, the others either I have not read or would like to read again.
+
+<!-- <div style="font-size:18px">
     <a href="/books/2024">2024</a>
     /
     <a href="/books/2023">2023</a>
-</div>
+</div> -->
 
 <div class="books-list">
   {%- for book in books -%}

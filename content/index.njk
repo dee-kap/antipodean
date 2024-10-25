@@ -12,19 +12,41 @@ const numberOfLatestPostsToShow = 5;
     <p>You can find more about me in the <a href="/about">about page</a></p>
 </div>
 
-{% set postsCount = collections.posts | length %}
-{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-{# <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1> #}
-<h2>Latest Posts</h2>
+<div style="margin-bottom:4em;">
+    {% set postsCount = collections.posts | length %}
+    {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
+    {# <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1> #}
+    <h2>Latest Posts</h2>
 
-{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
-{% set postslistCounter = postsCount %}
-{% include "postslist.njk" %}
+    {% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+    {% set postslistCounter = postsCount %}
+    {% include "postslist.njk" %}
 
-{% set morePosts = postsCount - numberOfLatestPostsToShow %}
-{% if morePosts > 0 %}
-<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
-{% endif %}
+    {% set morePosts = postsCount - numberOfLatestPostsToShow %}
+    {% if morePosts > 0 %}
+    <p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
+    {% endif %}
+</div>
+
+<h2>Currently Reading</h2>
+
+<div class="books-list" style="justify-content: start!important;gap:20px;">
+  {%- for book in books -%}
+    {%- if loop.index <= 3 -%}
+    <div class="book" style="background-image: url('/images/covers/{{ book.image }}')">
+      <div class="book-title">
+        {{ book.displayTitle or book.title }}
+        <div class="book-rating">
+        {%- set rating = book.rating | int -%}
+        {%- for i in range(1, 6) -%}
+            <span class="star {% if i <= rating %}filled{% endif %}">★</span>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+    {%- endif -%}
+  {%- endfor %}
+</div>
 
 <hr/>
 

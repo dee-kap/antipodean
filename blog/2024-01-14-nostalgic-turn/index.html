@@ -505,23 +505,24 @@ header {
 .books-list {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: 8px;
 	padding-top: 24px;
   }
   
   .books-list .book {
 	position: relative;
-	width: 100px; /* Adjust as needed */
+	width: 100px; 
 	height: 150px; 
-	margin-bottom: 16px;
-	background-size: cover; /* Ensures the background image covers the entire div */
-	background-position: center; /* Centers the image within the div */
-	border-radius: 3px; /* Optional: rounded corners */
+	margin-bottom: 8px;
+	background-size: cover; 
+	background-position: center; 
+	border-radius: 3px; 
 	border: 3px solid var(--color-lavender)
   }
   .books-list .book:hover {
-	border-color: var(--color-yellow); /* Replace with the color you want on hover */
-	box-shadow: 0 0 10px 5px var(--color-yellow); /* Glow effect */
+	border-color: var(--color-yellow); 
+	box-shadow: 0 0 10px 5px var(--color-yellow); 
   }
   
   .book-title {
@@ -537,11 +538,15 @@ header {
 	color: #fff;
 	text-align: center;
 	font-size: 12px;
+	font-weight: bold;
+  }
+
+  .books-list .book:hover .book-title {
+	color: var(--color-blue);
   }
   
   .book-rating {
 	font-size: 14px;
-	/* color: #ffd700;  */
   }
  
 
@@ -600,7 +605,7 @@ header {
 		<footer>
 		</footer>
 
-		<!-- This page `/blog/2024-01-14-nostalgic-turn/` was built on 2024-10-25T03:50:20.044Z -->
+		<!-- This page `/blog/2024-01-14-nostalgic-turn/` was built on 2024-10-25T06:39:45.027Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

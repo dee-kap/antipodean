@@ -337,23 +337,24 @@ header {
 .books-list {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	gap: 8px;
 	padding-top: 24px;
   }
   
   .books-list .book {
 	position: relative;
-	width: 100px; /* Adjust as needed */
+	width: 100px; 
 	height: 150px; 
-	margin-bottom: 16px;
-	background-size: cover; /* Ensures the background image covers the entire div */
-	background-position: center; /* Centers the image within the div */
-	border-radius: 3px; /* Optional: rounded corners */
+	margin-bottom: 8px;
+	background-size: cover; 
+	background-position: center; 
+	border-radius: 3px; 
 	border: 3px solid var(--color-lavender)
   }
   .books-list .book:hover {
-	border-color: var(--color-yellow); /* Replace with the color you want on hover */
-	box-shadow: 0 0 10px 5px var(--color-yellow); /* Glow effect */
+	border-color: var(--color-yellow); 
+	box-shadow: 0 0 10px 5px var(--color-yellow); 
   }
   
   .book-title {
@@ -369,11 +370,15 @@ header {
 	color: #fff;
 	text-align: center;
 	font-size: 12px;
+	font-weight: bold;
+  }
+
+  .books-list .book:hover .book-title {
+	color: var(--color-blue);
   }
   
   .book-rating {
 	font-size: 14px;
-	/* color: #ffd700;  */
   }
  
 
@@ -410,16 +415,18 @@ header {
 		<main id="skip">
 			<heading-anchors>
 				<h1 id="books">Books</h1>
-<p>Reading books is one of my favourite pass times. I feel blessed that I picked up this habit during my high school days and it has stayed with me since then.</p>
-<div style="font-size:18px">
+<p>Reading books is one of my favourite pass times. I like to read all kinds of books including Non-Fiction, History, Science, Biographies, Finance, Classics.</p>
+<p>First book I ever read was Dracula by Bram Stoker and that got me hooked on reading.</p>
+<p>These are some of the books I have in my library. I have given a star rating to the books I have read, the others either I have not read or would like to read again.</p>
+<!-- <div style="font-size:18px">
     <a href="/books/2024">2024</a>
     /
     <a href="/books/2023">2023</a>
-</div>
+</div> -->
 <div class="books-list"><div class="book" style="background-image: url('/images/covers/the-lucky-country.jpg')">
       <div class="book-title">
         The Lucky Country
-        <div class="book-rating"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star ">★</span><span class="star ">★</span>
+        <div class="book-rating"><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span>
         </div>
       </div>
     </div><div class="book" style="background-image: url('/images/covers/ultralearning.jpg')">
@@ -851,7 +858,7 @@ header {
     </div><div class="book" style="background-image: url('/images/covers/1984.jpg')">
       <div class="book-title">
         1984
-        <div class="book-rating"><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span><span class="star ">★</span>
+        <div class="book-rating"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star ">★</span>
         </div>
       </div>
     </div><div class="book" style="background-image: url('/images/covers/zen-and-the-art.jpg')">
@@ -1216,7 +1223,7 @@ header {
 		<footer>
 		</footer>
 
-		<!-- This page `/books/` was built on 2024-10-25T03:50:20.035Z -->
+		<!-- This page `/books/` was built on 2024-10-25T06:39:45.018Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

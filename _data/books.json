@@ -22,12 +22,12 @@
 	{
 		"title": "One Life",
 		"image": "one-life.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Investing: The Last Liberal Art",
 		"image": "investing-the-last-liberal-art.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Of Permanent Value: The Story of Warren Buffett",
@@ -38,47 +38,47 @@
 	{
 		"title": "Flash Crash",
 		"image": "flash-crash.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Elon Musk by Ashlee Vance",
 		"image": "elon-musk.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Einstein His Life and Universe",
 		"image": "einstein-his-life-and-universe.jpg",
-		"rating": ""
+		"rating": "6"
 	},
 	{
 		"title": "The Polymath: Unlocking the Power of Human Versatility",
 		"displayTitle": "The Polymath",
 		"image": "the-polymath.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Breath: The New Science of a Lost Art",
 		"displayTitle": "Breath",
 		"image": "breath.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "TITAN: Inside India’s Most Successful Consumer Brand by Vinay Kamath",
 		"displayTitle": "TITAN",
 		"image": "titan.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "Viral: The Search for the Origin of Covid19 by Alina Chan & Matt Ridley",
 		"displayTitle": "Viral",
 		"image": "viral.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Deep Survival: Who Lives, Who Dies and Why by Laurence Gonzales",
 		"displayTitle": "Deep Survival",
 		"image": "deep-survival.jpg",
-		"rating": ""
+		"rating": "6"
 	},
 	{
 		"title": "The Rebel Allocator by Jacob Taylor",
@@ -90,7 +90,7 @@
 		"title": "Richer, Wiser, Happier: How the World’s Greatest Investors Win in Markets and Life by William Green",
 		"displayTitle": "Richer, Wiser, Happier",
 		"image": "richer-wiser-happier.jpg",
-		"rating": "4"
+		"rating": "5"
 	},
 	{
 		"title": "How to Take Smart Notes by Sönke Ahrens",
@@ -102,78 +102,78 @@
 		"title": "Wolf of the Plains by Conn Iggulden",
 		"displayTitle": "Wolf of the Plains",
 		"image": "wolf-of-the-plains.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Dark Emu by Bruce Pascoe",
 		"displayTitle": "Dark Emu",
 		"image": "dark-emu.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "The Joys of Compounding: The Passionate Pursuit of Lifelong Learning by Gautam Baid",
 		"displayTitle": "The Joys of Compounding",
 		"image": "joys-of-compounding.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "Exodus by Leon Uris",
 		"image": "exodus.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "The Simpsons and Their Mathematical Secrets by Simon Singh",
 		"displayTitle": "The Simpsons and Their...",
 		"image": "simpsons-mathematical-secret.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "First Raj of the Sikhs: The Life and Times of Banda Singh Bahadur by Harish Dhillon",
 		"displayTitle": "First Raj of the Sikhs",
 		"image": "first-raj-of-the-sikhs.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "The Secret of the Nagas (The Shiva Trilogy, #2) by Amish Tripathi",
 		"displayTitle": "The Secret of the Nagas",
 		"image": "the-secret-of-the-nagas.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "The Immortals of Meluha (Shiva Trilogy, #1) by Amish Tripathi",
 		"displayTitle": "The Immortals of Meluha",
 		"image": "immortals-of-meluha.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "The Billionaire's Apprentice: The Rise of The Indian-American Elite and The Fall of The Galleon Hedge Fund by Anita Raghavan",
 		"displayTitle": "The Billionaire's Apprentice",
 		"image": "billionaires-apprentice.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Religion and Science by Bertrand Russell",
 		"displayTitle": "Religion and Science",
 		"image": "religion-and-science.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "Big Bang: The Origin of the Universe by Simon Singh",
 		"displayTitle": "Big Bang: The Origin of...",
 		"image": "big-bang.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "Wings of Fire: An Autobiography by A.P.J. Abdul Kalam",
 		"displayTitle": "Wings of Fire",
 		"image": "wings-of-fire.jpg",
-		"rating": ""
+		"rating": "6"
 	},
 	{
 		"title": "Indian Summer: The Secret History of the End of an Empire by Alex von Tunzelmann",
 		"displayTitle": "Indian Summer",
 		"image": "indian-summer.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "iCon: Steve Jobs, the Greatest Second Act in the History of Business by Jeffrey S. Young",
@@ -197,61 +197,61 @@
 		"title": "The Art of War by Sun Tzu",
 		"displayTitle": "The Art of War",
 		"image": "the-art-of-war.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Don't Go Back to Where You Came From by Tim Soutphommasane",
 		"displayTitle": "Don't Go Back to Where You...",
 		"image": "dont-go-where-you-came-from.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Bhagat Singh: Select Speeches and Writings",
 		"displayTitle": "Bhagat Singh: Select Speeches...",
 		"image": "bhagat-singh.jpg",
-		"rating": ""
+		"rating": "6"
 	},
 	{
 		"title": "The Snowball: Warren Buffett and the Business of Life by Alice Schroeder",
 		"displayTitle": "The Snowball",
 		"image": "the-snowball.jpg",
-		"rating": ""
+		"rating": "6"
 	},
 	{
 		"title": "The Sixteenth Round: From Number 1 Contender to Number 45472 by Rubin Carter",
 		"displayTitle": "The Sixteenth Round",
 		"image": "the-sixteenth-round.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "The Rise and Rise of Kerry Packer Uncut by Paul Barry",
 		"displayTitle": "The Rise and Rise of Kerry Packer",
 		"image": "the-rise-and-rise.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Dongri To Dubai : Six Decades of The Mumbai Mafia by S. Hussain Zaidi",
 		"displayTitle": "Dongri To Dubai",
 		"image": "dongri-to-dubai.jpg",
-		"rating": ""
+		"rating": "3"
 	},
 	{
 		"title": "Kingpin: How One Hacker Took Over the Billion-Dollar Cybercrime Underground by Kevin Poulsen",
 		"displayTitle": "Kingpin",
 		"image": "kingpin.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "The Fugitive Game: Online with Kevin Mitnick by Jonathan Littman",
 		"displayTitle": "The Fugitive Game",
 		"image": "the-fugitive-game.jpg",
-		"rating": ""
+		"rating": "4"
 	},
 	{
 		"title": "Beyond the Giant Personal Insight into the life of JRD Tata by D.R. Pendse",
 		"displayTitle": "Beyond the Giant",
 		"image": "beyond-the-giant.jpg",
-		"rating": ""
+		"rating": "5"
 	},
 	{
 		"title": "The Third Chimpanzee: The Evolution and Future of the Human Animal by Jared Diamond",

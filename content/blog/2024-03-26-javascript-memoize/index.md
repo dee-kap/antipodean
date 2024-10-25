@@ -17,7 +17,7 @@ I'll guide you through crafting your own memoize function. Memoization is an opt
 
 Below is the implementation for a basic memoize function:
 
-```JavaScript
+```js
 function memoize(fn) {
   const cache = {};
 
@@ -36,7 +36,7 @@ Using the memoize function
 
 First, define a function you wish to memoize. For instance:
 
-```JavaScript
+```js
 function add(a, b) {
   console.log("Called add");
   return a + b;
@@ -45,13 +45,13 @@ function add(a, b) {
 
 Then, create a memoized version of this function:
 
-```JavaScript
+```js
 const memoizedAdd = memoize(add);
 ```
 
 Upon calling the memoizedAdd function with arguments, you'll observe the initial call logs "Called add" and returns the sum:
 
-```javascript
+```js
 memoizedAdd(1, 2);
 // called add
 // 3
@@ -59,14 +59,14 @@ memoizedAdd(1, 2);
 
 Repeating the call with the same arguments does not log "Called add" again but directly returns 3, demonstrating the memoization effect:
 
-```javascript
+```js
 memoizedAdd(1, 2);
 // 3
 ```
 
 However, calling it with different arguments triggers the original add function:
 
-```javascript
+```js
 memoizedAdd(2, 3);
 // called add
 // 5
@@ -74,7 +74,7 @@ memoizedAdd(2, 3);
 
 Be cautious with attempting to simplify the memoize function excessively. Consider this terse version:
 
-```JavaScript
+```js
 function memoize(fn) {
   const cache = {};
 
@@ -88,7 +88,7 @@ function memoize(fn) {
 
 This approach might seem elegant, but it fails for functions that do not return a value, demonstrating that simplicity and readability often outweigh cleverness:
 
-```JavaScript
+```js
 function iReturnNothing() {
   console.log("iReturnNothing");
 }

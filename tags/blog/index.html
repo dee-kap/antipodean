@@ -334,26 +334,27 @@ header {
 .post-metadata time {
 	margin-right: 1em;
 }
+
 .books-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px; 
-	padding: 16px;
-	list-style: none;
-  }
-  
-  
-  .books-list li {
-	position: relative;
-	width: 150px; /* Adjust width based on desired size */
-	height: 250px; /* Adjust height based on desired size */
+	gap: 8px;
+	padding-top: 24px;
   }
   
   .books-list .book {
 	position: relative;
-	width: 150px;
-	height: 100%;
-	object-fit: cover; /* Ensures the cover image fits nicely */
+	width: 100px; /* Adjust as needed */
+	height: 150px; 
+	margin-bottom: 16px;
+	background-size: cover; /* Ensures the background image covers the entire div */
+	background-position: center; /* Centers the image within the div */
+	border-radius: 3px; /* Optional: rounded corners */
+	border: 3px solid var(--color-lavender)
+  }
+  .books-list .book:hover {
+	border-color: var(--color-yellow); /* Replace with the color you want on hover */
+	box-shadow: 0 0 10px 5px var(--color-yellow); /* Glow effect */
   }
   
   .book-title {
@@ -364,18 +365,29 @@ header {
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	height: 35%;
-	background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+	height: 45%;
+	background: rgba(0, 0, 0, 0.5);
 	color: #fff;
-	padding: 8px;
 	text-align: center;
-	/* font-size: 16px; */
+	font-size: 12px;
   }
   
   .book-rating {
 	font-size: 14px;
-	margin-top: 4px;
-	color: #ffd700; /* Gold color for star ratings */
+	/* color: #ffd700;  */
+  }
+ 
+
+  .star {
+	color: #ccc; /* Default color for unfilled stars */
+	opacity: 0.6; /* Make the unfilled stars slightly transparent */
+	text-shadow: 0 0 1px #666; /* Add a subtle outline to the unfilled stars */
+  }
+  
+  .star.filled {
+	color: #ffd700; /* Gold color for filled stars */
+	opacity: 1; /* Ensure filled stars are fully opaque */
+	text-shadow: none; /* Remove the outline for filled stars */
   }</style>
 	</head>
 	<body>
@@ -417,7 +429,7 @@ header {
 		<footer>
 		</footer>
 
-		<!-- This page `/tags/blog/` was built on 2024-10-24T11:33:05.483Z -->
+		<!-- This page `/tags/blog/` was built on 2024-10-25T03:26:50.392Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

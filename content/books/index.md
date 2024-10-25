@@ -13,12 +13,12 @@ These are some of the books I have in my library. I have given a star rating to 
 ## My rating system
 I follow a 6 star rating system. 
 
-1. <span class="star filled">★</span> Shouldn't have bothered. Because I'm a kind person, I give 1 star for just the effort of writing a book.
+1. <span class="star filled">★</span> Shouldn't have bothered. 
 2. <span class="star filled">★★</span> It was not so bad that it deserved 1 star but not good either
 3. <span class="star filled">★★★</span> Neither good nor bad
 4. <span class="star filled">★★★★</span> It got me interested enough to read it all the way through
 5. <span class="star filled">★★★★★</span> I learned plenty from this book and loved reading it, maybe I will read it again
-6. <span class="star filled">★★★★★</span><span class="star filled six">★</span> Beyond awesome. This book had a huge impact on me and made a dent in my universe
+6. <span class="star filled">★★★★★</span><span class="star filled six">★</span> <mark>Beyond awesome.</mark> This book had a huge impact on me and made a dent in my universe
 
 <div class="books-list">
   {%- for book in books -%}
